@@ -1,0 +1,10 @@
+version: "3"
+services:
+  remix:
+    build: .
+    ports:
+      - 5173:5173
+    volumes:
+      - .:/app
+    # 以下を追加
+    command: /bin/sh -c "cd /app; npm run dev;"
