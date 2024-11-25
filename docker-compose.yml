@@ -4,7 +4,22 @@ services:
     build: .
     ports:
       - 5173:5173
+      - "5555:5555"
     volumes:
       - .:/app
     # 以下を追加
     command: /bin/sh -c "cd /app; npm run dev;"
+  postgres:
+    image: postgres:15 # PostgreSQL の公式イメージを使用
+    container_name: postgres
+    restart: always
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
