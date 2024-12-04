@@ -3,8 +3,7 @@ services:
   remix:
     build: .
     ports:
-      - 5173:5173
+      - "5173:5173"
     volumes:
       - .:/app
-    # 以下を追加
-    command: /bin/sh -c "cd /app; npm run dev;"
+      - /app/node_modules # Docker 内の node_modules を優先
