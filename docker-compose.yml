@@ -3,24 +3,23 @@ services:
   remix:
     build: .
     ports:
-      - 5173:5173
+      - "5173:5173"
       - "5555:5555"
     volumes:
       - .:/app
+      - /app/node_modules # Docker 内の node_modules を優先
   postgres:
-    image: postgres:15 # PostgreSQL の公式イメージを使用
+    image: postgres:15
     container_name: postgres
     restart: always
     ports:
-      - 15432:5432
+      - "15432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: mydatabase
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
 volumes:
-  postgres_data:
-   volumes:
-      - .:/app
-      - /app/node_modules # Docker 内の node_modules を優先
+  postgres_data: # 空のボリュームとして正しい形式で指定
