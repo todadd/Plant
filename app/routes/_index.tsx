@@ -1,11 +1,10 @@
-import { redirect } from "@remix-run/node";
+import { redirect, LoaderFunction } from "@remix-run/node";
+import { isLoggedIn } from "../utils/session.server";
 
-// Loaderでリダイレクトを設定
-export const loader = async () => {
-  return redirect("/login");
+export const loader: LoaderFunction = async ({ request }) => {
+  const loggedIn = await isLoggedIn(request);
+  if (!loggedIn) {
+    return redirect("/login");
+  }
+  return redirect("/app");
 };
-
-export default function Index() {
-  // このコンポーネントは実際にはレンダリングされない
-  return null;
-}

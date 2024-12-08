@@ -35,3 +35,9 @@ export async function destroySession(request: Request) {
     },
   });
 }
+
+
+export async function isLoggedIn(request: Request) {
+  const session = await getSession(request);
+  return session.has("token"); // トークンが存在すればログイン状態と判断
+}
