@@ -43,7 +43,7 @@ export const action: ActionFunction = async ({ request }) => {
   });
 
   // セッションを作成してリダイレクト
-  return createSession(token, "/dashboard"); // ログイン後のリダイレクト先
+  return createSession(token, "/"); // ログイン後のリダイレクト先
 };
 
 
