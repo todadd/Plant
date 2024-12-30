@@ -1,7 +1,9 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
+  content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
+            "./src/**/*.{js,jsx,ts,tsx}",
+            "./node_modules/react-tailwindcss-datepicker/dist/index.esm.{js,ts}"],
   theme: {
     extend: {
       fontFamily: {

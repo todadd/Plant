@@ -1,6 +1,5 @@
 import { Textbox } from "../components/Textbox"
 import { Label } from "~/components/Label";
-import {Button} from "~/components/Button";
 import {GoogleButton} from "../components/GoogleButton"
 import { prisma } from "../../prisma/prisma";
 import bcrypt from "bcryptjs";
@@ -43,7 +42,7 @@ export const action: ActionFunction = async ({ request }) => {
   });
 
   // セッションを作成してリダイレクト
-  return createSession(token, "/dashboard"); // ログイン後のリダイレクト先
+  return createSession(token, "/"); // ログイン後のリダイレクト先
 };
 
 
@@ -77,7 +76,7 @@ export default function Login() {
               ></Textbox>
           </div>
           <div className="flex flex-col mt-3">
-            <Button text="Sign in" className="bg-secondary-200 text-white-100 hover:bg-secondary-100 active:bg-secondary-300 text-xs hover:text-white-200"></Button>
+            <button className="bg-secondary-200 text-white-100 hover:bg-secondary-100 active:bg-secondary-300 text-xs hover:text-white-200">Sign in</button>
             <Label text="Forgot Password" className="text-white-400 mx-auto mt-2.5 text-xs"></Label>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { Textbox } from "../components/Textbox"
 import { Label } from "~/components/Label";
-import {Button} from "~/components/Button";
 import {GoogleButton} from "../components/GoogleButton"
 import {useActionData ,Form } from "@remix-run/react";
 import { prisma } from "../../prisma/prisma"
@@ -78,7 +77,7 @@ export default function Register() {
                 required></Textbox>
             </div>
             <div className="flex flex-col mt-3">
-              <Button text="Sign up With Email" className="bg-secondary-200 text-white-100 hover:bg-secondary-100 active:bg-secondary-300 text-xs hover:text-white-200"></Button>
+              <button className="bg-secondary-200 text-white-100 hover:bg-secondary-100 active:bg-secondary-300 text-xs hover:text-white-200">Sign up With Email</button>
             </div>
           </div>
         </Form>
