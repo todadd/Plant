@@ -17,4 +17,39 @@ model User {
   googleProviderId  String?   @unique             // Google OAuth 用のプロバイダーID
   createdAt         DateTime  @default(now())     // 作成日時
   updatedAt         DateTime  @updatedAt          // 更新日時
+  Plant            Plant[]                        // ユーザーとのリレーション
+  Care             Care[]                         // ユーザーとのリレーション
+  Log              Log[]                          // ユーザーとのリレーション
+}
+
+model Plant {
+  id                String    @id @default(cuid()) // Idユニーク
+  user              User @relation(fields: [userId], references: [id]) // ユーザーとのリレーション
+  userId            String                         // ユーザーID
+  name              String                         // 植物名
+  createdAt         DateTime  @default(now())     // 作成日時
+  updatedAt         DateTime  @updatedAt          // 更新日時
+  Logs             Log[]                          // ログとのリレーション
+}
+
+model Care {
+  id                String    @id @default(cuid()) // Idユニーク
+  user              User @relation(fields: [userId], references: [id]) // ユーザーとのリレーション
+  userId            String                         // ユーザーID
+  name              String                         // 植物名
+  createdAt         DateTime  @default(now())     // 作成日時
+  updatedAt         DateTime  @updatedAt          // 更新日時
+}
+
+model Log {
+  id                String    @id @default(cuid()) // Idユニーク
+  user              User @relation(fields: [userId], references: [id]) // ユーザーとのリレーション
+  userId            String                         // ユーザーID
+  plant             Plant @relation(fields: [plantId], references: [id]) // 植物とのリレーション
+  plantId           String                         // 植物ID
+  careDate          DateTime                       // お手入れ日  
+  care              String                         // Careはリレーションを持たない
+  detail            String                         // 詳細
+  createdAt         DateTime  @default(now())     // 作成日時
+  updatedAt         DateTime  @updatedAt          // 更新日時
 }
