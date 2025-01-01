@@ -6,7 +6,7 @@ import { Textbox } from './Textbox';
 import { Form, useActionData } from "@remix-run/react";
 
 
-interface CareDialogProps {
+interface PlantDialogProps {
   isOpen: boolean;
   handleClose: Dispatch<SetStateAction<boolean>>;
   targetId: string;
@@ -18,7 +18,7 @@ type ActionData = {
 };
 
 
-const CareDialog: React.FC<CareDialogProps> = ({ isOpen, handleClose,targetId,targetAction }) => {
+const PlantDialog: React.FC<PlantDialogProps> = ({ isOpen, handleClose,targetId,targetAction }) => {
   const actionData = useActionData<ActionData>();
   function close() {
     handleClose(false)
@@ -42,7 +42,7 @@ const CareDialog: React.FC<CareDialogProps> = ({ isOpen, handleClose,targetId,ta
                 className="w-full max-w-md rounded-xl bg-white-50 p-3 backdrop-blur-2xl">
                 <div className='flex justify-between align-middle'>
                     <DialogTitle as="h3" className="text-white-500 font-bold ">
-                        Add Care
+                        Add Plant
                     </DialogTitle>
 
                       <div className='hover:bg-white-200 rounded-full h-7 w-7 flex justify-center align-middle'>
@@ -80,4 +80,4 @@ const CareDialog: React.FC<CareDialogProps> = ({ isOpen, handleClose,targetId,ta
   )
 }
 
-export default CareDialog
+export default PlantDialog

@@ -1,6 +1,5 @@
 import { Textbox } from "../components/Textbox"
 import { Label } from "~/components/Label";
-import {GoogleButton} from "../components/GoogleButton"
 import {useActionData ,Form } from "@remix-run/react";
 import { prisma } from "../../prisma/prisma"
 import bcrypt from "bcryptjs"
@@ -49,15 +48,12 @@ export default function Register() {
   const actionData = useActionData<ActionData>();
   return (
     <div className="h-full flex flex-col px-5 justify-center ">
-        <div className="h-1/6 w-full flex flex-col justify-center border-b border-dashed border-white-400 pb-5">
-          <GoogleButton text="Sign up With Google"></GoogleButton>
-        </div>
         {actionData?.error && (
         <div className="text-red-500 text-sm mb-4">{actionData.error}</div>
         )}
         <Form
          method="post"
-         className="h-4/6 w-full flex mt-4 flex-col justify-around">
+         className="h-full w-full flex mt-4 flex-col justify-around">
           <div className="h-4/6 w-full flex mt-4 flex-col justify-around">
             <div>
               <Label text="EMAIL" className="text-white-300 text-xs"></Label>
@@ -68,7 +64,7 @@ export default function Register() {
                   required
                   ></Textbox>
             </div>
-            <div>
+            <div className="mt-4">
               <Label text="PASSWORD" className="text-white-300 text-xs"></Label>
               <Textbox   
                 id="password"         
@@ -76,8 +72,8 @@ export default function Register() {
                 type="password"
                 required></Textbox>
             </div>
-            <div className="flex flex-col mt-3">
-              <button className="bg-secondary-200 text-white-100 hover:bg-secondary-100 active:bg-secondary-300 text-xs hover:text-white-200">Sign up With Email</button>
+            <div className="flex flex-col mt-12">
+              <button className="h-10 rounded bg-secondary-200 text-white-500 hover:bg-secondary-100 active:bg-secondary-300 text-xs hover:text-white-200">Sign up</button>
             </div>
           </div>
         </Form>

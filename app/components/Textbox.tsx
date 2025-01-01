@@ -1,7 +1,10 @@
+import React from "react";
+
 type Props = React.ComponentProps<'input'>;
-export const Textbox = (props: Props) =>{
+// eslint-disable-next-line react/prop-types
+export const Textbox:React.FC<Props>= ({ value, onChange, ...rest }) =>{
   return (
-    <input type="text" className="py-1 
+    <input type="text" value={value} onChange={onChange} className="py-1 
                                 px-2
                                 bg-white-50 
                                 w-full
@@ -12,7 +15,7 @@ export const Textbox = (props: Props) =>{
                                 focus:outline-none
                                 focus:border-2
                                 focus:border-primary-300 
-                                active:border-none" {...props} >
+                                active:border-none" {...rest}>
     </input>
   );
 }
